@@ -1,0 +1,16 @@
+{
+  "name": "pr-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Favna/pr-test.git",
+  "author": "Jeroen Claassens <support@favware.tech>",
+  "license": "MIT",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
