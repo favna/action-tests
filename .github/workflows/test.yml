@@ -3,10 +3,24 @@ name: testing
 on: push
 
 jobs:
-  one:
-    runs-on: ubuntu-latest
+  test:
+    name: Node v${{ matrix.node_version }} - ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    strategy:
+      matrix:
+        node_version: [12, 14]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
     steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node_version }}
       - name: Dump GitHub context
+        if: "(matrix.os == 'ubuntu-latest') && (matrix.node_version == 14)"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
