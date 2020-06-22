@@ -4,23 +4,45 @@ on: push
 
 jobs:
   test:
-    name: Node v${{ matrix.node_version }} - ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+    name: PR creation test
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    strategy:
-      matrix:
-        node_version: [12, 14]
-        os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node_version }}
+      - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node_version }}
-      - name: Dump GitHub context
-        if: "(matrix.os == 'ubuntu-latest') && (matrix.node_version == 14)"
+          node-version: 14
+      - name: Restore CI Cache
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-14-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Deps
+        run: yarn
+      - name: Install GitHub CLI
+        run: curl -sL $(curl -s https://api.github.com/repos/cli/cli/releases/latest | jq ".assets | map(select(.browser_download_url | contains(\"_linux_amd64.tar.gz\")))[0].browser_download_url" | xargs) | tar -xz --wildcards "*gh" && mv gh*linux_amd64/bin/gh . && rm -r gh_*linux_amd64
+      - name: Make some small change and create a pull request
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+          GITHUB_USER: Favware-bot
+          GITHUB_EMAIL: favwarebot@gmail.com
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: |
+          echo "test" >> README.md;
+          git add .;
+          if git diff-index --quiet HEAD --; then
+            exit 0;
+          else
+            git remote set-url origin "https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${GITHUB_REPOSITORY}.git";
+            git config --local user.email "${GITHUB_EMAIL}";
+            git config --local user.name "${GITHUB_USER}";
+            git checkout -b update-data/$(date +%F-%H-%M);
+            git commit -sam "refactor: update data";
+            git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+            echo "Logging github cli version"
+            ./gh --version
+            echo "Creating PR"
+            ./gh pr create -t "refactor: update data" -b "*bleep bloop* I updated the data files" -r "Favna" -B master;
+          fi
