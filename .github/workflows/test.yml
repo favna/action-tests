@@ -1,0 +1,16 @@
+name: testing
+
+on: push
+
+jobs:
+  test:
+    name: Testing GitHub Actions
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2 
+      - name: Get GitHub Branch Name
+        run: echo ::set-env name=GITHUB_BRANCH_NAME::$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g')
+      - name: Log stored git Branch
+        run: echo "${{ env.GITHUB_BRANCH_NAME }}"
