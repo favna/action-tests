@@ -1,3 +1,5 @@
-# Add hacktoberfest label for any file changes
 'Event: Hacktoberfest':
+- any: ['**/*']
+
+'Meta: Github':
 - any: ['**/*']
