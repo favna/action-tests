@@ -1,5 +1,2 @@
 'Event: Hacktoberfest':
 - any: ['**/*']
-
-'Meta: Github':
-- any: ['**/*']

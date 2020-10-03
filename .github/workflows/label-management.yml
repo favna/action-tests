@@ -1,0 +1,35 @@
+name: Automatic Label Management
+
+on:
+  issues:
+  label:
+  pull_request_target:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/labels.yml'
+
+jobs:
+
+  label_sync:
+    name: Automatic Label Synchronization
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Run Label Sync
+        uses: crazy-max/ghaction-github-labeler@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  pr_labeler:
+    name: Automatic Pull Request Labeler
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+    - uses: actions/labeler@main
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        sync-labels: true
