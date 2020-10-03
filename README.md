@@ -1,3 +1,1 @@
-Testing github actions in an isolated enviroment. Change
-
-dummy change
+Testing github actions in an isolated environment.
