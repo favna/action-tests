@@ -1,7 +1,5 @@
-# Add hacktoberfest label to any root file changes
 'Event: Hacktoberfest':
 - any: ['**/*']
 
-# Add simple label to any root file changes
-simple:
+'Meta: Github':
 - any: ['**/*']
