@@ -15,7 +15,7 @@ jobs:
   label_sync:
     name: Automatic Label Synchronization
     runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
   pr_labeler:
     name: Automatic Pull Request Labeler
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
+    if: (github.event_name == 'pull_request' || github.event_name == 'push') && github.ref != 'refs/heads/main'
     steps:
     - uses: actions/labeler@main
       with:
