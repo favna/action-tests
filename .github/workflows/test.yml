@@ -14,3 +14,5 @@ jobs:
         run: echo ::set-env name=GITHUB_BRANCH_NAME::$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')
       - name: Log stored git Branch
         run: echo "${{ env.GITHUB_BRANCH_NAME }}"
+      - name: Log github event name
+        run: echo "${{ github.event_name }}"
