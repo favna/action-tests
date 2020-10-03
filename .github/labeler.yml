@@ -1,7 +1,3 @@
-# Add hacktoberfest label to any root file changes
+# Add hacktoberfest label for any file changes
 'Event: Hacktoberfest':
-- any: ['**/*']
-
-# Add simple label to any root file changes
-simple:
 - any: ['**/*']
