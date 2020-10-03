@@ -16,3 +16,17 @@ jobs:
         run: echo "${{ env.GITHUB_BRANCH_NAME }}"
       - name: Log github event name
         run: echo "${{ github.event_name }}"
+      - name: Log github event ref
+        run: echo "${{ github.ref }}"
+      - name: Log github event head_ref
+        run: echo "${{ github.head_ref }}"
+      - name: Log github event base_ref
+        run: echo "${{ github.base_ref }}"
+  
+  run_on_with_base_ref:
+    name: Runs only if there is a base_ref
+    runs-on: ubuntu-latest
+    if: ${{ github.base_ref }}
+    steps:
+      - name: runs
+        run: echo "test"
