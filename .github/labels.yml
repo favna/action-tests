@@ -1,3 +1,6 @@
+- name: 'simple'
+  description: Simple label
+  color: B3E88C
 - name: 'Bug: Already Fixed'
   description: Issues that report already fixed bugs.
   color: B3E88C
