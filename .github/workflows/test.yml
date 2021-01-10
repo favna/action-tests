@@ -14,10 +14,10 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v2
       - name: Get commit message for both push and pull_request events
-        id: identify
+        id: get_commit_message
         run: echo ::set-output name=commit_message::$(git log --format=%B -n 1 ${{ github.event.after }})
     outputs:
-      commit_message: ${{ steps.identify.outputs.commit_message }}
+      commit_message: ${{ steps.get_commit_message.outputs.commit_message }}
 
   test:
     name: Testing GitHub Actions
@@ -28,8 +28,9 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v2
       - name: Get GitHub Branch Name
-        run: echo "GITHUB_BRANCH_NAME=$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')" >> $GITHUB_ENV
+        id: get_branch_name
+        run: echo ::set-output name=branch_name::$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')
       - name: Log stored git Branch
-        run: echo $BRANCH_NAME
+        run: echo "${{ steps.get_branch_name.outputs.branch_name }}"
       - name: Log commit message
         run: echo "${{ needs.pre_ci.outputs.commit_message }}"
