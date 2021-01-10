@@ -33,3 +33,5 @@ jobs:
         run: echo $BRANCH_NAME
       - name: Log commit message
         run: echo "$(git log --format=%B -n 1 ${{ github.event.after }})"
+      - name: Log commit message
+        run: echo "$(git log --format=%B -n 1 ${{ github.event.after }})"
