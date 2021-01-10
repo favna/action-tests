@@ -17,12 +17,21 @@ jobs:
           fetch-depth: 10
       - name: '[Push] Get commit message'
         id: push_get_commit_message
-        run: echo ::set-output name=commit_message::$(git log --format=%B -n 1 HEAD)
+        run: echo ::set-output name=push_commit_message::$(git log --format=%B -n 1 HEAD)
       - name: '[Pull Request] Get commit message'
         id: pr_get_commit_message
-        run: echo ::set-output name=commit_message::$(git log --format=%B -n 1 HEAD^2)
+        run: echo ::set-output name=pr_commit_message::$(git log --format=%B -n 1 HEAD^2)
+      - name: Resolve commit message
+        id: get_commit_message
+        run: |
+          echo "pr commit message: ${{ steps.pr_get_commit_message.outputs.pr_commit_message }}"
+          echo "push commit message: ${{ steps.push_get_commit_message.outputs.push_commit_message }}"
+          echo "will resolve to: $( [ -z "${{ steps.pr_get_commit_message.outputs.pr_commit_message }}" ] && echo ${{ steps.pr_get_commit_message.outputs.commit_message }} || echo ${{ steps.push_get_commit_message.outputs.push_commit_message }} )"
+
+          echo ::set-output name=resolved_commit_message::$( [ -z "${{ steps.pr_get_commit_message.outputs.pr_commit_message }}" ] && echo ${{ steps.pr_get_commit_message.outputs.commit_message }} || echo ${{ steps.push_get_commit_message.outputs.push_commit_message }} )
     outputs:
-      commit_message: echo $( [ -z "${{ steps.pr_get_commit_message.outputs.commit_message }}" ] && echo ${{ steps.pr_get_commit_message.outputs.commit_message }} || echo ${{ steps.push_get_commit_message.outputs.commit_message }} )
+      commit_message_2: echo
+      commit_message: ${{ steps.get_commit_message.outputs.resolved_commit_message }}
 
   test:
     name: Testing GitHub Actions
