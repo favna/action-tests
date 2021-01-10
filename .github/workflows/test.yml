@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "pr commit message: ${{ steps.pr_get_commit_message.outputs.pr_commit_message }}"
           echo "push commit message: ${{ steps.push_get_commit_message.outputs.push_commit_message }}"
-          echo "will resolve to: $(echo $( [ ! -z "${{ steps.pr_get_commit_message.outputs.pr_commit_message }}" ] && echo ${{ steps.pr_get_commit_message.outputs.commit_message }} || echo ${{ steps.push_get_commit_message.outputs.push_commit_message }} ))"
+          echo "will resolve to: $(echo $( [ -z "${{ steps.pr_get_commit_message.outputs.pr_commit_message }}" ] && echo ${{ steps.push_get_commit_message.outputs.push_commit_message }} || echo ${{ steps.pr_get_commit_message.outputs.commit_message }} ))"
 
           echo ::set-output name=resolved_commit_message::$( [ -z "${{ steps.pr_get_commit_message.outputs.pr_commit_message }}" ] && echo ${{ steps.pr_get_commit_message.outputs.commit_message }} || echo ${{ steps.push_get_commit_message.outputs.push_commit_message }} )
     outputs:
