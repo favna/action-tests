@@ -22,7 +22,7 @@ jobs:
   test:
     name: Testing GitHub Actions
     runs-on: ubuntu-latest
-    if: "!(contains(github.event.head_commit.message, '[skip ci]') || echo \"${{ toJson(needs) }}\")"
+    if: "!contains(\"${{ needs.pre_ci.outputs.commit_message }}\", '[skip ci]')"
     needs: pre_ci
     steps:
       - name: Checkout Project
@@ -33,7 +33,3 @@ jobs:
         run: echo $BRANCH_NAME
       - name: Log commit message
         run: echo "${{ needs.pre_ci.outputs.commit_message }}"
-      - name: Log steps
-        run: echo "${{ toJson(steps) }}"
-      - name: Log needs
-        run: echo "${{ toJson(needs) }}"
