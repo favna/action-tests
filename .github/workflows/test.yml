@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  PRE_ci:
+  pre_ci:
     name: Prepare CI environment
     runs-on: ubuntu-latest
     steps:
@@ -33,7 +33,7 @@ jobs:
     name: Testing GitHub Actions
     runs-on: ubuntu-latest
     # if: "!contains(needs.pre_ci.outputs.commit_message, '[skip ci]')"
-    needs: PRE_ci
+    needs: pre_ci
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
