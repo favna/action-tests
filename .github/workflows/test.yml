@@ -32,7 +32,7 @@ jobs:
   test:
     name: Testing GitHub Actions
     runs-on: ubuntu-latest
-    # if: "!contains(needs.pre_ci.outputs.commit_message, '[skip ci]')"
+    if: "!contains(needs.pre_ci.outputs.commit_message, '[skip ci]')"
     needs: pre_ci
     steps:
       - name: Checkout Project
@@ -42,5 +42,5 @@ jobs:
         run: echo ::set-output name=branch_name::$(echo $( [ -z "${{ github.head_ref }}" ] && echo ${{ github.ref }} | cut -c12- || echo ${{ github.head_ref }} ) | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')
       - name: Log stored git Branch
         run: echo "${{ steps.get_branch_name.outputs.branch_name }}"
-      - name: Log needs
+      - name: Log commit message
         run: echo "${{ needs.pre_ci.outputs.commit_message }}"
