@@ -22,7 +22,7 @@ jobs:
   test:
     name: Testing GitHub Actions
     runs-on: ubuntu-latest
-    if: "!contains($(git log --format=%B -n 1 HEAD^2), '[skip ci]')"
+    if: "!contains(\"$(git log --format=%B -n 1 HEAD^2)\", '[skip ci]')"
     # needs: pre_ci
     steps:
       - name: Checkout Project
