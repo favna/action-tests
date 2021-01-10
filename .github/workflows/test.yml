@@ -32,8 +32,8 @@ jobs:
       - name: Log stored git Branch
         run: echo $BRANCH_NAME
       - name: Log commit message
-        run: echo "${{ steps.identify.outputs.commit_message }}"
+        run: echo "${{ needs.pre_ci.outputs.commit_message }}"
       - name: Log steps
-        run: echo "{{ toJson(steps) }}"
+        run: echo "${{ toJson(steps) }}"
       - name: Log needs
-        run: echo "{{ toJson(needs) }}"
+        run: echo "${{ toJson(needs) }}"
