@@ -22,7 +22,7 @@ jobs:
   test:
     name: Testing GitHub Actions
     runs-on: ubuntu-latest
-    if: "!contains(${{ needs.pre_ci.outputs.commit_message }}, '[skip ci]')"
+    if: "!contains(needs.pre_ci.outputs.commit_message, '[skip ci]')"
     needs: pre_ci
     steps:
       - name: Checkout Project
