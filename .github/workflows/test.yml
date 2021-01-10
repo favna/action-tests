@@ -18,8 +18,6 @@ jobs:
           fetch-depth: 3
       - name: Get GitHub Branch Name
         run: echo "GITHUB_BRANCH_NAME=$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')" >> $GITHUB_ENV
-      - name: log github context
-        run: echo ${{ toJson(github)}}
 
       # In case of a push event, the commit we care about is simply HEAD.
       # The current branch name can be found by parsing GITHUB_REF, for example,
