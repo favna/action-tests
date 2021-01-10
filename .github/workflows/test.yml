@@ -17,7 +17,7 @@ jobs:
       - name: Get GitHub Branch Name
         run: echo "GITHUB_BRANCH_NAME=$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')" >> $GITHUB_ENV
       - name: Log github event
-        run: echo ${{ github.event }}
+        run: echo ${{ github.event }} | jq
       - name: Log stored git Branch
         run: echo $BRANCH_NAME
         env:
