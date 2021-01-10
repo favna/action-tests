@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Get GitHub Branch Name
         id: get_branch_name
-        run: echo ::set-output name=branch_name::$(echo $( [ -z "${{ github.ref }}" ] && echo "empty" || echo "${{ github.ref }}" ) | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')
+        run: echo ::set-output name=branch_name::$(echo $( [ -z "${{ github.ref }}" ] && echo "empty" || echo ${{ github.ref }} | cut -c12- ) | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')
       - name: Log stored git Branch
         run: echo "${{ steps.get_branch_name.outputs.branch_name }}"
       - name: Log commit message
