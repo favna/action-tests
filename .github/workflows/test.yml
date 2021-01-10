@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
       - name: Get commit message for both push and pull_request events
         id: get_commit_message
         run: echo ::set-output name=commit_message::$(git log --format=%B -n 1 ${{ github.event.after }})
@@ -29,7 +31,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Get GitHub Branch Name
         id: get_branch_name
-        run: echo ::set-output name=branch_name::$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')
+        run: echo ::set-output name=branch_name::$(echo ${{ github.head_ref }} | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')
       - name: Log stored git Branch
         run: echo "${{ steps.get_branch_name.outputs.branch_name }}"
       - name: Log commit message
