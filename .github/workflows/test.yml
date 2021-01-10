@@ -1,29 +1,29 @@
 name: testing
 
 on:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   pull_request:
 
 jobs:
-  # pre_ci:
-  #   name: Prepare CI environment
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Project
-  #       uses: actions/checkout@v2
-  #     - name: Get commit message for both push and pull_request events
-  #       id: identify
-  #       run: echo ::set-output name=commit_message::$(git log --format=%B -n 1 ${{ github.event.after }})
-  #   outputs:
-  #     commit_message: ${{ steps.identify.outputs.commit_message }}
+  pre_ci:
+    name: Prepare CI environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Get commit message for both push and pull_request events
+        id: identify
+        run: echo ::set-output name=commit_message::$(git log --format=%B -n 1 ${{ github.event.after }})
+    outputs:
+      commit_message: ${{ steps.identify.outputs.commit_message }}
 
   test:
     name: Testing GitHub Actions
     runs-on: ubuntu-latest
-    if: "!contains(\"$(git log --format=%B -n 1 HEAD^2)\", '[skip ci]')"
-    # needs: pre_ci
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    needs: pre_ci
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
@@ -31,7 +31,5 @@ jobs:
         run: echo "GITHUB_BRANCH_NAME=$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')" >> $GITHUB_ENV
       - name: Log stored git Branch
         run: echo $BRANCH_NAME
-      # - name: Log commit message
-      #   run: echo "$(git log --format=%B -n 1 ${{ github.event.after }})"
-      # - name: Log commit message
-      #   run: echo "$(git log --format=%B -n 1 ${{ github.event.after }})"
+      - name: Log commit message
+        run: echo "${{ steps.identify.outputs.commit_message }}"
