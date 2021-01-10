@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v2
         with:
-          # Fetch depth 2 is enough for HEAD^2, no need for fetch-depth: 10
+          # We need to fetch with a depth of 2 for pull_request.
           fetch-depth: 2
 
         # If this workflow was triggered by a push then resolve the commit message from HEAD
