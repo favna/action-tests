@@ -49,8 +49,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Get GitHub Branch Name
         run: echo "GITHUB_BRANCH_NAME=$(echo ${{ github.ref }} | cut -c12- | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')" >> $GITHUB_ENV
-      - name: Log github event
-        run: echo ${{ toJson(github.event) }}
       - name: Log stored git Branch
         run: echo $BRANCH_NAME
         env:
