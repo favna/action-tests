@@ -7,23 +7,23 @@ on:
   pull_request:
 
 jobs:
-  pre_ci:
-    name: Prepare CI environment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v2
-      - name: Get commit message for both push and pull_request events
-        id: identify
-        run: echo ::set-output name=commit_message::$(git log --format=%B -n 1 ${{ github.event.after }})
-    outputs:
-      commit_message: ${{ steps.identify.outputs.commit_message }}
+  # pre_ci:
+  #   name: Prepare CI environment
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Project
+  #       uses: actions/checkout@v2
+  #     - name: Get commit message for both push and pull_request events
+  #       id: identify
+  #       run: echo ::set-output name=commit_message::$(git log --format=%B -n 1 ${{ github.event.after }})
+  #   outputs:
+  #     commit_message: ${{ steps.identify.outputs.commit_message }}
 
   test:
     name: Testing GitHub Actions
     runs-on: ubuntu-latest
-    if: "!contains(${{ needs.pre_ci.outputs.commit_message }}, '[skip ci]')"
-    needs: pre_ci
+    if: "!contains($(git log --format=%B -n 1 ${{ github.event.after }}), '[skip ci]')"
+    # needs: pre_ci
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
@@ -32,4 +32,4 @@ jobs:
       - name: Log stored git Branch
         run: echo $BRANCH_NAME
       - name: Log commit message
-        run: echo "${{ needs.pre_ci.outputs.commit_message }}"
+        run: echo "$(git log --format=%B -n 1 ${{ github.event.after }})"
