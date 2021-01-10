@@ -15,12 +15,12 @@ jobs:
     # of a pull request
     - uses: actions/checkout@v2
       with:
-        fetch-depth: 10
+        fetch-depth: 3
 
     # In case of a push event, the commit we care about is simply HEAD.
     # The current branch name can be found by parsing GITHUB_REF, for example,
     # if we are on the master branch, then GITHUB_REF = refs/heads/master.
-    - name: Get commit branch and commit message
+    - name: '[Push Event] Get commit branch and commit message'
       if: github.event_name == 'push'
       run: |
         echo "COMMIT_BRANCH=$(echo ${GITHUB_REF##*/})" >> $GITHUB_ENV
@@ -31,7 +31,7 @@ jobs:
     # In case of a pull_request event, the commit we care about is HEAD^2, that
     # is, the second parent of the pull request merge commit.
     # The current branch name is directly given by GITHUB_HEAD_REF
-    - name: Get commit branch and commit message
+    - name: '[Pull Request Event] Get commit branch and commit message'
       if: github.event_name == 'pull_request'
       run: |
         echo "COMMIT_BRANCH=$GITHUB_HEAD_REF" >> $GITHUB_ENV
@@ -55,5 +55,9 @@ jobs:
           BRANCH_NAME: '${{ env.GITHUB_BRANCH_NAME }}'
       - name: Log commit message
         run: echo $COMMIT_MESSAGE
+        env:
+          COMMIT_MESSAGE: '${{ env.COMMIT_MESSAGE }}'
       - name: Log commit branch
         run: echo $COMMIT_BRANCH
+        env:
+          COMMIT_BRANCH: '${{ env.COMMIT_BRANCH }}'
