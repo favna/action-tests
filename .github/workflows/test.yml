@@ -14,23 +14,36 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v2
         with:
+          # Fetch depth 2 is enough for HEAD^2, no need for fetch-depth: 10
           fetch-depth: 2
-      - name: '[Push] Get commit message'
+
+        # If this workflow was triggered by a push then resolve the commit message from HEAD
+        # It is stored in output steps, to be referenced with ${{ steps.push_get_commit_message.outputs.push_commit_message }}
+      - name: "[Push] Get commit message"
         if: github.event_name == 'push'
         id: push_get_commit_message
-        run: echo ::set-output name=push_commit_message::$(git log --format=%B -n 1 HEAD)
-      - name: '[Pull Request] Get commit message'
+        run:
+          echo ::set-output name=push_commit_message::$(git log --format=%B -n 1 HEAD)
+
+        # If this workflow was triggered by a pull request (open or synchronize!) then resolve the commit message from HEAD^2
+        # It is stored in output steps, to be referenced with ${{ steps.pr_get_commit_message.outputs.pr_commit_message }}
+      - name: "[Pull Request] Get commit message"
         if: github.event_name == 'pull_request'
         id: pr_get_commit_message
         run: echo ::set-output name=pr_commit_message::$(git log --format=%B -n 1 HEAD^2)
-      # - name: Resolve commit message
-      #   id: get_commit_message
-      #   run: echo ::set-output name=resolved_commit_message::$( [ -z "${{ steps.pr_get_commit_message.outputs.pr_commit_message }}" ] && echo ${{ steps.push_get_commit_message.outputs.push_commit_message }} || echo ${{ steps.pr_get_commit_message.outputs.pr_commit_message }} )
-    outputs:
-      commit_message: $( [ -z "${{ steps.pr_get_commit_message.outputs.pr_commit_message }}" ] && echo ${{ steps.push_get_commit_message.outputs.push_commit_message }} || echo ${{ steps.pr_get_commit_message.outputs.pr_commit_message }} )
 
-  test:
-    name: Testing GitHub Actions
+    # Finally we want to make the commit message available to other jobs. This can be done with job-level outputs
+    # However as we do not know whether the commit message was set in Push or Pull Request event we need to do some
+    # bash magic to resolve the one or the other
+    #
+    # For **Pull Request** events this will resolve to something like "$( [ -z "commit message pr" ] && echo "" || echo "commit message pr" )" which then resolves to just "commit message pr"
+    # For **Push** events this will resolve to something like "$( [ -z "" ] && echo "commit message push"  || echo "" )" which then resolves to just "commit message push"
+    outputs:
+      commit_message: $( [ -z "${{ steps.pr_get_commit_message.outputs.pr_commit_message }}" ] && echo "${{ steps.push_get_commit_message.outputs.push_commit_message }}" || echo "${{ steps.pr_get_commit_message.outputs.pr_commit_message }}" )
+
+  # This job can be skipped by including [skip ci] in the commit message
+  skippable_job:
+    name: Skippable Job
     runs-on: ubuntu-latest
     if: "!contains(needs.pre_ci.outputs.commit_message, '[skip ci]')"
     needs: pre_ci
@@ -42,5 +55,8 @@ jobs:
         run: echo ::set-output name=branch_name::$(echo $( [ -z "${{ github.head_ref }}" ] && echo ${{ github.ref }} | cut -c12- || echo ${{ github.head_ref }} ) | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')
       - name: Log stored git Branch
         run: echo "${{ steps.get_branch_name.outputs.branch_name }}"
+
+        # If this job doesn't get skipped you'll see the commit message appear here, it's just a debugging this
+        # so be sure to remove it for your actual workflow
       - name: Log commit message
         run: echo "${{ needs.pre_ci.outputs.commit_message }}"
