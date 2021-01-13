@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.5](https://github.com/Favna/action-tests/compare/v0.0.4...v0.0.5) (2021-01-13)
 
-
 ### Features
 
-* add prettier ([33791a2](https://github.com/Favna/action-tests/commit/33791a2d0f266d690bbabdcd2ecfe0d0901a83cd))
+-   add prettier ([33791a2](https://github.com/Favna/action-tests/commit/33791a2d0f266d690bbabdcd2ecfe0d0901a83cd))
 
 ### [0.0.4](https://github.com/Favna/action-tests/compare/v0.0.3...v0.0.4) (2021-01-13)
 
