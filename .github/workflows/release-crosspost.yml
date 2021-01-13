@@ -16,28 +16,11 @@ jobs:
 
       - name: Send Release Message
         id: crosspost_action
-        run: |
-          BODY=$(echo "${{ secrets.RELEASE_WEBHOOK }}" | sed -r \
-                -e ':a' \
-                -e 'N' \
-                -e '$!ba' \
-                -e 's/\n/\t\t/g' \
-                -e 's/\r//g' \
-                -e 's/\t\t\t\t/\t\t/g' \
-                -e 's/- +//g' \
-                -e 's/### ([^\t]+)\t\t/"}, {"name": "\1", "value": "/g' \
-                -e 's/^"}, //' \
-                -e 's/$/"}/g' \
-                -e 's/\t\t/\\n/g')
-
-          PAYLOAD="{\"username\": \"GitHub Release\", \"embeds\": [{\"title\": \"${{ steps.get_release_name.outputs.release_name }}\", \"fields\": [$BODY]}]}"
-
-          echo "$PAYLOAD"
-
-          echo ::set-output name=response::$(curl -X POST \
-                -H "Content-Type: application/json" \
-                -d "$PAYLOAD" \
-                "${{ secrets.RELEASE_WEBHOOK }}")
+        uses: kludge-cs/gitcord-release-changelogger@v1
+        with:
+          discord-websocket: ${{ secrets.RELEASE_WEBHOOK }}
+          release-body: ${{ github.event.release.body }}
+          release-name: ${{ steps.get_release_name.outputs.release_name }}
 
       - name: Log response
         run: echo ${{ steps.crosspost_action.outputs.response }}
