@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/Favna/action-tests/compare/v0.0.2...v0.0.3) (2021-01-13)
+
+
+### Features
+
+* detach from library ([bec828d](https://github.com/Favna/action-tests/commit/bec828d6a53dfb715a5f77a72f845c4e4a32b7d0))
+
 ### [0.0.2](https://github.com/Favna/action-tests/compare/v0.0.1...v0.0.2) (2021-01-13)
 
 
