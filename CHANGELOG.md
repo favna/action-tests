@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/Favna/action-tests/compare/v0.0.3...v0.0.4) (2021-01-13)
+
+
+### Features
+
+* log response ([ef39d4b](https://github.com/Favna/action-tests/commit/ef39d4b68ef3e741af57c8f0b4181a22c10ec414))
+
 ### [0.0.3](https://github.com/Favna/action-tests/compare/v0.0.2...v0.0.3) (2021-01-13)
 
 
