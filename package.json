@@ -2,5 +2,8 @@
   "name": "actions-test",
   "version": "0.0.0",
   "author": "Jeroen Claassens <support@favware.tech>",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "standard-version": "^9.1.0"
+  }
 }

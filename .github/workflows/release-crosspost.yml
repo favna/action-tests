@@ -1,0 +1,21 @@
+name: Release Crosspost
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  Crosspost:
+    name: Release Crosspost
+    runs-on: ubuntu-latest
+    steps:
+      - name: Parse release name
+        id: get_release_name
+        run: echo ::set-output name=release_name::$( [ -z "${{ github.event.release.name }}" ] && echo "${{ github.event.release.tag_name }}" || echo "${{ github.event.release.name }}" )
+      - name: "Run gitcord-release-changelogger"
+        uses: kludge-cs/gitcord-release-changelogger@v1
+        with:
+          discord-websocket: ${{ secrets.RELEASE_WEBHOOK }}
+          release-body: ${{ github.event.release.body }}
+          release-name: ${{ steps.get_release_name.outputs.release_name }}
