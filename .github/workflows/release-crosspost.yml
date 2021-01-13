@@ -9,6 +9,9 @@ jobs:
   Crosspost:
     name: Release Crosspost
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Parse release name
         id: get_release_name
