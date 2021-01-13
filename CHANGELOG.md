@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/Favna/action-tests/compare/v0.0.5...v0.0.6) (2021-01-13)
+
+
+### Features
+
+* aaa ([ed90a29](https://github.com/Favna/action-tests/commit/ed90a29ab900c7ef0b0e00f5aa5895f83b432e39))
+* cleanup ([22487fb](https://github.com/Favna/action-tests/commit/22487fb9d78582260dacb4d40a2344c93dcc18c2))
+
 ### [0.0.5](https://github.com/Favna/action-tests/compare/v0.0.4...v0.0.5) (2021-01-13)
 
 ### Features
