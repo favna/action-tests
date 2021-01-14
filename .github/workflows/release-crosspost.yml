@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Parse release name
         id: get_release_name
-        run: ::set-output name=name::${RELEASE:-$TAG}
+        run: echo ::set-output name=release_name::${RELEASE:-$TAG}
         env:
           RELEASE: ${{ github.event.release.name }}
           TAG: ${{ github.event.release.tag_name }}
@@ -24,4 +24,3 @@ jobs:
           discord-webhook: ${{ secrets.RELEASE_WEBHOOK }}
           release-body: ${{ github.event.release.body }}
           release-name: ${{ steps.get_release_name.outputs.release_name }}
-
