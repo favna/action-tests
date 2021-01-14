@@ -24,3 +24,9 @@ jobs:
           discord-webhook: ${{ secrets.RELEASE_WEBHOOK }}
           release-body: ${{ github.event.release.body }}
           release-name: ${{ steps.get_release_name.outputs.release_name }}
+      - name: Log Steps
+        run: echo ${{ toJson(steps) }}
+      - name: Log Payload
+        run: echo ${{ steps.crosspost_action.outputs.discord-payload }}
+      - name: Log API response
+        run: echo ${{ steps.crosspost_action.outputs.discord-api-result }}
