@@ -12,15 +12,16 @@ jobs:
     steps:
       - name: Parse release name
         id: get_release_name
-        run: echo ::set-output name=release_name::$( [ -z "${{ github.event.release.name }}" ] && echo "${{ github.event.release.tag_name }}" || echo "${{ github.event.release.name }}" )
+        run: ::set-output name=name::${RELEASE:-$TAG}
+        env:
+          RELEASE: ${{ github.event.release.name }}
+          TAG: ${{ github.event.release.tag_name }}
 
       - name: Send Release Message
         id: crosspost_action
-        uses: kludge-cs/gitcord-release-changelogger@v1
+        uses: kludge-cs/gitcord-release-changelogger@v2
         with:
-          discord-websocket: ${{ secrets.RELEASE_WEBHOOK }}
+          discord-webhook: ${{ secrets.RELEASE_WEBHOOK }}
           release-body: ${{ github.event.release.body }}
           release-name: ${{ steps.get_release_name.outputs.release_name }}
 
-      - name: Log response
-        run: echo ${{ steps.crosspost_action.outputs.response }}
