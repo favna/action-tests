@@ -4,7 +4,7 @@
   "author": "Jeroen Claassens <support@favware.tech>",
   "private": true,
   "dependencies": {
-    "@sapphire/prettier-config": "^1.0.5",
+    "@sapphire/prettier-config": "^1.0.6",
     "prettier": "^2.2.1",
     "standard-version": "^9.1.0"
   },
