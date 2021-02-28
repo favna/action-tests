@@ -16,8 +16,8 @@ jobs:
       - name: Run background and do stuff
         run: |
           tar -czf files.tar.gz ./package.json &
-          jobs
-          sleep 5
+          jobs &&
+          sleep 10 &&
           echo "testing"
       - name: Store tar
         uses: actions/upload-artifact@v2
