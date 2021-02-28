@@ -43,3 +43,8 @@ jobs:
         run: |
           nohup tar -czf files.tar.gz ./ &
           jobs
+      - name: Store tar
+        uses: actions/upload-artifact@v2
+        with:
+          name: tarball
+          path: ./files.tar.gz
