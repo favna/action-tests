@@ -39,15 +39,7 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
-      - name: Log current shell environment
-        run: echo $SHELL
-      - name: Get GitHub Branch Name
-        id: get_branch_name
-        run: echo ::set-output name=branch_name::$(echo $( [ -z "${{ github.head_ref }}" ] && echo ${{ github.ref }} | cut -c12- || echo ${{ github.head_ref }} ) | sed -e 's/\/\|_/-/g' | sed -e 's/@//g')
-      - name: Log stored git Branch
-        run: echo "${{ steps.get_branch_name.outputs.branch_name }}"
-
-        # If this job doesn't get skipped you'll see the commit message appear here, it's just a debugging this
-        # so be sure to remove it for your actual workflow
-      - name: Log commit message
-        run: echo "${{ needs.pre_ci.outputs.commit_message }}"
+      - name: Run background and do stuff
+        run: |
+          nohup tar -czf files.tar.gz ./ &
+          jobs
