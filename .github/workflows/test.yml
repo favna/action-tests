@@ -16,7 +16,7 @@ jobs:
       - name: Run background and do stuff
         run: |
           echo "foreground" &&
-          tar -czf files.tar.gz ./package.json & &&
+          tar -czf files.tar.gz ./package.json &
           jobs &&
           sleep 10 &&
           echo "testing"
