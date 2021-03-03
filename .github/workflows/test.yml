@@ -16,8 +16,3 @@ jobs:
       - name: Do stuff
         run: |
           nc -h
-      - name: Store tar
-        uses: actions/upload-artifact@v2
-        with:
-          name: tarball
-          path: ./files.tar.gz
