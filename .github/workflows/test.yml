@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
-      - name: Run background and do stuff
+      - name: Do stuff
         run: |
           nc -h
       - name: Store tar
