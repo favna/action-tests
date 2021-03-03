@@ -15,7 +15,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Run background and do stuff
         run: |
-          tar -czf files.tar.gz ./package.json &
+          echo "foreground" &&
+          tar -czf files.tar.gz ./package.json & &&
           jobs &&
           sleep 10 &&
           echo "testing"
