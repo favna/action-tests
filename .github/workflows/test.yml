@@ -1,10 +1,9 @@
 name: Sample Workflow
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  release:
+    types:
+      - published
 
 jobs:
   main_job:
@@ -13,6 +12,7 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
-      - name: Do stuff
-        run: |
-          nc -h
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
