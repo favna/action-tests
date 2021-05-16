@@ -1,9 +1,9 @@
 name: Sample Workflow
 
 on:
-  release:
-    types:
-      - published
+  push:
+    branches:
+      - other
 
 jobs:
   main_job:
@@ -12,7 +12,30 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      - name: Install GitHub CLI
+        run: |
+          echo "
+            test2" >> test.txt
+      - name: Install GitHub CLI
+        run: |
+          curl -sL \
+              $(curl -sL \
+                  -H "Authorization: bearer ${{ secrets.BOT_TOKEN }}" \
+                  -X POST \
+                  --data '{"query":"query { repository(owner: \"cli\", name: \"cli\") { releases(last: 1) { nodes { releaseAssets(first: 20) { nodes { downloadUrl name }}}}}}"}' "https://api.github.com/graphql" |
+                  jq -cr '.data.repository.releases.nodes[0].releaseAssets.nodes[]? | select(.name | contains("linux_amd64.tar.gz")).downloadUrl') |
+              tar -xz --wildcards "*gh" && mv gh*linux_amd64/bin/gh . && rm -r gh_*linux_amd64
+      - name: Commit any changes and create a pull request
+        run: |
+          git add .;
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit, exiting with code 0"
+            exit 0;
+          else
+            git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git checkout -b update-data/$(date +%F-%H-%M);
+            git commit -sam "refactor: update data [skip publish]";
+            git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+            ./gh pr create -t "refactor: update data [skip publish]" -b "*bleep bloop* I updated the data files" -l "Meta: Data Update" -B main;
+          fi
