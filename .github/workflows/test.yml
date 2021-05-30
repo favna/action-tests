@@ -29,6 +29,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [[ "${{ github.event.pull_request.title }}" = "New Crowdin updates" ]]; then
+          if [ "${{ github.event.pull_request.title }}" = "New Crowdin updates" ] && [ "${{ github.event.pull_request.user.login }}" = "NM-EEA-Y" ]; then
             ./gh pr edit ${{ github.event.pull_request.number }} --title "feat(crowdin): update localization files"
           fi
