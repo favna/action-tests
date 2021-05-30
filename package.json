@@ -1,6 +1,6 @@
 {
   "name": "actions-test",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "author": "Jeroen Claassens <support@favware.tech>",
   "private": true,
   "dependencies": {
