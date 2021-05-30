@@ -7,6 +7,7 @@ on:
 
 jobs:
   rename_crowdin_prs:
+    name: Rename PR
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
