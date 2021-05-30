@@ -7,7 +7,6 @@ on:
 
 jobs:
   rename_crowdin_prs:
-    name: Auto Rename Crowdin PRs
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
