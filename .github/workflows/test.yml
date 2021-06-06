@@ -20,4 +20,4 @@ jobs:
                   jq -cr '.data.repository.releases.nodes[0].releaseAssets.nodes[]? | select(.name | contains("linux_amd64.tar.gz")).downloadUrl') |
               tar -xz --wildcards "*gh" && mv gh*linux_amd64/bin/gh . && rm -r gh_*linux_amd64
       - name: Do something
-        run: echo $(jq --raw-output '.version' package.json).$(git rev-parse --verify HEAD)
+        run: echo $(jq --raw-output '.version' package.json).$(git rev-parse --verify --short HEAD)
