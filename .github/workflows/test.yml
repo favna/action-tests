@@ -1,6 +1,7 @@
 name: Auto Rename Crowdin PRs
 
 on:
+  workflow_dispatch:
   push:
 
 jobs:
@@ -10,6 +11,10 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Install GitHub CLI
         run: |
           curl -sL \
