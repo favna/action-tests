@@ -5,23 +5,9 @@ on:
   push:
 
 jobs:
-  pre_ci:
-    name: Prepare CI environment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
-      - name: Add problem matchers
-        run: |
-          echo "::add-matcher::.github/problemMatchers/tsc.json"
-          echo "::add-matcher::.github/problemMatchers/eslint-stylish.json"
-
   rename_crowdin_prs:
     name: Rename PR
     runs-on: ubuntu-latest
-    needs: pre_ci
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
