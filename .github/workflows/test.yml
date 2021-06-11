@@ -29,6 +29,4 @@ jobs:
                   jq -cr '.data.repository.releases.nodes[0].releaseAssets.nodes[]? | select(.name | contains("linux_amd64.tar.gz")).downloadUrl') |
               tar -xz --wildcards "*gh" && mv gh*linux_amd64/bin/gh . && rm -r gh_*linux_amd64
       - name: Do something
-        run: |
-          [[ ${{ github.event_name }} == 'push' ]] && tag="next" || tag="dev"
-          echo "testing $tag"
+        run: echo "testing $([[ ${{ github.event_name }} == 'push' ]] && echo "next" || echo "dev")"
