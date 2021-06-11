@@ -3,6 +3,7 @@ name: Auto Rename Crowdin PRs
 on:
   workflow_dispatch:
   push:
+  pull_request:
 
 jobs:
   rename_crowdin_prs:
