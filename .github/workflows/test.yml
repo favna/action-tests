@@ -2,6 +2,18 @@ name: Auto Rename Crowdin PRs
 
 on:
   workflow_dispatch:
+    inputs:
+      prNumber:
+        description: The number of the PR that is being deployed
+        required: true
+      ref:
+        description: The branch that is being deployed. Should be a branch on the given repository
+        required: false
+        default: main
+      repository:
+        description: The {owner}/{repository} that is being deployed.
+        required: false
+        default: Favna/action-tests
   push:
   pull_request:
 
@@ -9,11 +21,13 @@ jobs:
   rename_crowdin_prs:
     name: Rename PR
     runs-on: ubuntu-latest
-    env:
-      TAG: "${{ github.event_name == 'push' && 'next' || 'dev' }}"
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          repository: ${{ github.event.inputs.repository || 'Favna/action-tests' }}
+          ref: ${{ github.event.inputs.ref || 'main' }}
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
@@ -32,4 +46,11 @@ jobs:
                   jq -cr '.data.repository.releases.nodes[0].releaseAssets.nodes[]? | select(.name | contains("linux_amd64.tar.gz")).downloadUrl') |
               tar -xz --wildcards "*gh" && mv gh*linux_amd64/bin/gh . && rm -r gh_*linux_amd64
       - name: Do something
-        run: echo "testing $TAG"
+        run: |
+          # Resolve the tag to be used. "next" for push events, "pr-{prNumber}" for dispatch events.
+          TAG=$([[ ${{ github.event_name }} == 'push' ]] && echo 'next' || echo 'pr-${{ github.event.inputs.prNumber }}')
+          BRANCH=$(echo '${{ github.event.inputs.ref || 'main' }}')
+
+          # Bump and publish
+          echo ${TAG}
+          echo ${BRANCH}
