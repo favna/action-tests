@@ -58,3 +58,4 @@ jobs:
           # Bump and publish
           echo ${TAG}
           echo ${BRANCH}
+          echo ${{ github.event.inputs.fetch-depth || 0 }}
