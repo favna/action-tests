@@ -25,7 +25,7 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: ${{ github.event_name }} == 'push' && 0 || 1
           # repository: ${{ github.event.inputs.repository || 'Favna/action-tests' }}
           # ref: ${{ github.event.inputs.ref || 'main' }}
       - name: Dump GitHub context
