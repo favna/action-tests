@@ -14,10 +14,6 @@ on:
         description: The {owner}/{repository} that is being deployed.
         required: false
         default: Favna/action-tests
-      fetch-depth:
-        description: Number of commits to fetch. 0 indicates all history for all branches and tags.
-        required: false
-        default: '0'
   push:
   pull_request:
 
@@ -29,7 +25,7 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v2
         with:
-          fetch-depth: ${{ github.event.inputs.fetch-depth || 0 }}
+          fetch-depth: 0
           # repository: ${{ github.event.inputs.repository || 'Favna/action-tests' }}
           # ref: ${{ github.event.inputs.ref || 'main' }}
       - name: Dump GitHub context
