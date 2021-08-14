@@ -28,6 +28,10 @@ jobs:
           fetch-depth: 0
           # repository: ${{ github.event.inputs.repository || 'Favna/action-tests' }}
           # ref: ${{ github.event.inputs.ref || 'main' }}
+      - name: Use Node.js v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
@@ -36,6 +40,8 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(job) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Dump Node Version
+        run: echo node --version
       - name: Install GitHub CLI
         run: |
           curl -sL \
