@@ -41,7 +41,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(job) }}
         run: echo "$GITHUB_CONTEXT"
       - name: Dump Node Version
-        run: echo node --version
+        run: node --version
       - name: Install GitHub CLI
         run: |
           curl -sL \
