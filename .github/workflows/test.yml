@@ -20,8 +20,8 @@ on:
       - closed
 
 jobs:
-  rename_crowdin_prs:
-    name: Rename PR
+  testing_actions:
+    name: Testing Actions
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
