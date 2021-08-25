@@ -4,7 +4,7 @@ set -ex
 
 curl -sL \
     $(curl -sL \
-        -H "Authorization: bearer ${GITHUB_TOKEN}" \
+        -H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
         -X POST \
         --data '{"query":"query { repository(owner: \"cli\", name: \"cli\") { releases(last: 1) { nodes { releaseAssets(first: 20) { nodes { downloadUrl name }}}}}}"}' "https://api.github.com/graphql" |
         jq -cr '.data.repository.releases.nodes[0].releaseAssets.nodes[]? | select(.name | contains("linux_amd64.tar.gz")).downloadUrl') |
