@@ -1,4 +1,4 @@
-name: Auto Rename Crowdin PRs
+name: Testing Actions
 
 on:
   workflow_dispatch:
