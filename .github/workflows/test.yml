@@ -20,8 +20,8 @@ on:
       - closed
 
 jobs:
-  rename_crowdin_prs:
-    name: Rename PR
+  testing_actions:
+    name: Testing Actions
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
@@ -32,7 +32,7 @@ jobs:
           node-version: 16
       - name: Dump GitHub context
         env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
+          GITHUB_CONTEXT: ${{ github.event.number }}
         run: echo "$GITHUB_CONTEXT"
       - name: Dump Job context
         env:
