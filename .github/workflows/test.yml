@@ -34,7 +34,10 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ github.event.number }}
         run: echo "$GITHUB_CONTEXT"
-      - name: Dump Job context
+      - name: Get semantic version
+        run: echo '::set-output name=semver::$(grep '"version":' package.json | cut -d\" -f4)'
+        id: get-semver
+      - name: Dump output
         env:
-          JOB_CONTEXT: ${{ toJSON(job) }}
-        run: echo "$JOB_CONTEXT"
+          OUTPUT: ${{ steps.get-semver.outputs.semver }}
+        run: echo "$OUTPUT"
