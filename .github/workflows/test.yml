@@ -38,6 +38,4 @@ jobs:
         run: echo ::set-output name=semver::$(jq --raw-output '.version' package.json)
         id: get-semver
       - name: Dump output
-        env:
-          OUTPUT: ${{ steps.get-semver.outputs.semver }}
-        run: echo "$OUTPUT"
+        run: echo ${{ steps.get-semver.outputs.semver }}
