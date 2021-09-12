@@ -35,7 +35,7 @@ jobs:
           GITHUB_CONTEXT: ${{ github.event.number }}
         run: echo "$GITHUB_CONTEXT"
       - name: Get semantic version
-        run: echo '::set-output name=semver::$(echo $(jq --raw-output '.version' package.json))'
+        run: echo ::set-output name=semver::$(jq --raw-output '.version' package.json)
         id: get-semver
       - name: Dump output
         env:
