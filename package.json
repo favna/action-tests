@@ -6,7 +6,7 @@
   "dependencies": {
     "@sapphire/prettier-config": "^1.2.3",
     "prettier": "^2.4.1",
-    "standard-version": "^9.3.1"
+    "standard-version": "^9.3.2"
   },
   "prettier": "@sapphire/prettier-config"
 }
