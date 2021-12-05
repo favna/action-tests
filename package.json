@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@sapphire/prettier-config": "^1.2.6",
-    "prettier": "^2.4.1",
+    "prettier": "^2.5.1",
     "standard-version": "^9.3.2"
   },
   "prettier": "@sapphire/prettier-config"
