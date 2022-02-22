@@ -8,5 +8,6 @@
     "prettier": "^2.5.1",
     "standard-version": "^9.3.2"
   },
-  "prettier": "@sapphire/prettier-config"
+  "prettier": "@sapphire/prettier-config",
+  "packageManager": "yarn@3.2.0"
 }
