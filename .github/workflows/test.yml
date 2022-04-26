@@ -1,41 +1,29 @@
 name: Testing Actions
 
 on:
-  workflow_dispatch:
-    inputs:
-      prNumber:
-        description: The number of the PR that is being deployed
-        required: true
-      ref:
-        description: The branch that is being deployed. Should be a branch on the given repository
-        required: false
-        default: main
-      repository:
-        description: The {owner}/{repository} that is being deployed.
-        required: false
-        default: Favna/action-tests
   push:
-  pull_request:
-    types:
-      - closed
 
 jobs:
   testing_actions:
-    name: Testing Actions
-    runs-on: ubuntu-latest
+    name: Testing Actions Node v${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node: [12, 14, 15, 16, 17]
+        os: [ubuntu-18.04, ubuntu-20.04, macos-latest, macos-12, windows-latest]
+        include:
+          - node: 18
+            os: ubuntu-20.04
     steps:
       - name: Checkout Project
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
-      - name: Use Node.js v18
+      - name: Use Node.js v${{ matrix.node }}
         uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # tag=v3
         with:
-          node-version: 18
+          node-version: ${{ matrix.node }}
+          cache: yarn
+          registry-url: https://registry.npmjs.org/
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ github.event.number }}
         run: echo "$GITHUB_CONTEXT"
-      - name: Get semantic version
-        run: echo ::set-output name=semver::$(jq --raw-output '.version' package.json)
-        id: get-semver
-      - name: Dump output
-        run: echo ${{ steps.get-semver.outputs.semver }}
