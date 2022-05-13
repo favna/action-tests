@@ -39,6 +39,8 @@ jobs:
           echo "${HOME}/.local/bin" >> $GITHUB_PATH
       - name: Bump semver
         run: yarn bump -v --no-skip-tag --no-skip-changelog
+        env:
+          CI: false
       - name: Dump data
         run: |
           cat package.json | jq '.version'
