@@ -1,16 +1,20 @@
 {
-  "name": "actions-test",
-  "version": "13.0.0-dev",
-  "author": "Jeroen Claassens <support@favware.tech>",
-  "private": true,
-  "dependencies": {
-    "@sapphire/prettier-config": "^1.4.3",
-    "prettier": "^2.6.2",
-    "standard-version": "^9.3.2"
-  },
-  "prettier": "@sapphire/prettier-config",
-  "packageManager": "yarn@3.2.0",
-  "devDependencies": {
-    "@favware/cliff-jumper": "^1.7.0"
-  }
+	"name": "actions-test",
+	"version": "13.0.0-dev",
+	"author": "Jeroen Claassens <support@favware.tech>",
+	"private": true,
+	"dependencies": {
+		"@sapphire/prettier-config": "^1.4.3",
+		"prettier": "^2.6.2",
+		"standard-version": "^9.3.2"
+	},
+	"prettier": "@sapphire/prettier-config",
+	"packageManager": "yarn@3.2.0",
+	"scripts": {
+		"bump": "cliff-jumper",
+		"check-update": "cliff-jumper --dry-run"
+	},
+	"devDependencies": {
+		"@favware/cliff-jumper": "^1.7.0"
+	}
 }
