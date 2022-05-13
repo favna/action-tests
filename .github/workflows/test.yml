@@ -14,7 +14,10 @@ jobs:
         uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # tag=v3
         with:
           node-version: 18
-          registry-url: https://registry.yarnpkg.org/
+          cache: yarn
+          registry-url: https://registry.yarnpkg.com/
+      - name: Install Dependencies
+        run: yarn --immutable
       - name: Install Git Cliff
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
