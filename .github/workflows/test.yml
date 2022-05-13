@@ -22,26 +22,24 @@ jobs:
           registry-url: https://registry.yarnpkg.com/
       - name: Install Dependencies
         run: yarn --immutable
-      - name: Install Git Cliff
+      - name: Make Changes
+        run: echo "Hello World" >> README.md
+      - name: Commit any changes and create a pull request
         env:
+          GITHUB_USER: github-actions[bot]
+          GITHUB_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -o ./git-cliff.tar.gz -sL \
-              $(curl -sL \
-                  -H "Authorization: bearer ${GITHUB_TOKEN}" \
-                  -X POST \
-                  --data '{"query":"query { repository(owner: \"orhun\", name: \"git-cliff\") { releases(last: 1) { nodes { releaseAssets(first: 20) { nodes { downloadUrl name }}}}}}"}' "https://api.github.com/graphql" |
-              jq -cr '.data.repository.releases.nodes[0].releaseAssets.nodes[]? | select(.name | contains("x86_64-unknown-linux-gnu.tar.gz")).downloadUrl')
-          tar -xzf ./git-cliff.tar.gz --wildcards "*git-cliff"
-          mkdir -p ${HOME}/.local/bin
-          mv git-cliff-*/git-cliff ${HOME}/.local/bin/git-cliff
-          rm -r git-cliff-*
-          echo "${HOME}/.local/bin" >> $GITHUB_PATH
-      - name: Bump semver
-        run: yarn bump -v --no-skip-tag --no-skip-changelog
-        env:
-          CI: false
-      - name: Dump data
-        run: |
-          cat package.json | jq '.version'
-          cat CHANGELOG.md
+          git add .;
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit, exiting with code 0"
+            exit 0;
+          else
+            git remote set-url origin "https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${GITHUB_REPOSITORY}.git";
+            git config --local user.email "${GITHUB_EMAIL}";
+            git config --local user.name "${GITHUB_USER}";
+            git checkout -b test/update-data/$(date +%F-%H-%M);
+            git commit -sam "refactor: update data";
+            git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+            gh pr create -t "refactor: update data" -b "*bleep bloop* I updated the data files" -B main;
+          fi
