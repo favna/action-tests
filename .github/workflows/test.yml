@@ -37,5 +37,5 @@ jobs:
         run: yarn bump -v
       - name: Dump data
         run: |
-          echo package.json | jq '.version'
+          echo package.json
           echo CHANGELOG.md
