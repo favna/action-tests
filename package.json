@@ -15,6 +15,6 @@
 		"check-update": "cliff-jumper --dry-run"
 	},
 	"devDependencies": {
-		"@favware/cliff-jumper": "^1.7.0"
+		"@favware/cliff-jumper": "^1.8.0"
 	}
 }

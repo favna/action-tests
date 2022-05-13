@@ -34,8 +34,8 @@ jobs:
           rm -r git-cliff-*
           echo "${HOME}/.local/bin" >> $GITHUB_PATH
       - name: Bump semver
-        run: yarn bump -v
+        run: yarn bump -v --no-skip-tag --no-skip-changelog
       - name: Dump data
         run: |
-          echo package.json
-          echo CHANGELOG.md
+          cat package.json | jq '.version'
+          cat CHANGELOG.md
