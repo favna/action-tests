@@ -9,5 +9,8 @@
     "standard-version": "^9.3.2"
   },
   "prettier": "@sapphire/prettier-config",
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.0",
+  "devDependencies": {
+    "@favware/cliff-jumper": "^1.7.0"
+  }
 }

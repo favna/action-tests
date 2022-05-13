@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
 
 ### [0.0.9](https://github.com/Favna/action-tests/compare/v0.0.8...v0.0.9) (2021-01-14)
 

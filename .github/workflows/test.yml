@@ -5,31 +5,34 @@ on:
 
 jobs:
   testing_actions:
-    name: Testing Actions Node v${{ matrix.node }} on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node: [12, 14, 15, 16, 17]
-        os: [ubuntu-18.04, ubuntu-20.04, macos-latest, macos-12, windows-latest]
-        include:
-          - node: 18
-            os: ubuntu-20.04
-          - node: 18
-            os: macos-latest
-          - node: 18
-            os: macos-12
-          - node: 18
-            os: windows-latest
+    name: Testing Actions
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
-      - name: Use Node.js v${{ matrix.node }}
+      - name: Use Node.js v18
         uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # tag=v3
         with:
-          node-version: ${{ matrix.node }}
-          registry-url: https://registry.npmjs.org/
-      - name: Dump GitHub context
-        if: ${{ matrix.node == '16' && matrix.os == 'ubuntu-20.04' }}
+          node-version: 18
+          registry-url: https://registry.yarnpkg.org/
+      - name: Install Git Cliff
         env:
-          GITHUB_CONTEXT: ${{ github.event.number }}
-        run: echo "$GITHUB_CONTEXT"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -o ./git-cliff.tar.gz -sL \
+              $(curl -sL \
+                  -H "Authorization: bearer ${GITHUB_TOKEN}" \
+                  -X POST \
+                  --data '{"query":"query { repository(owner: \"orhun\", name: \"git-cliff\") { releases(last: 1) { nodes { releaseAssets(first: 20) { nodes { downloadUrl name }}}}}}"}' "https://api.github.com/graphql" |
+              jq -cr '.data.repository.releases.nodes[0].releaseAssets.nodes[]? | select(.name | contains("x86_64-unknown-linux-gnu.tar.gz")).downloadUrl')
+          tar -xzf ./git-cliff.tar.gz --wildcards "*git-cliff"
+          mkdir -p ${HOME}/.local/bin
+          mv git-cliff-*/git-cliff ${HOME}/.local/bin/git-cliff
+          rm -r git-cliff-*
+          echo "${HOME}/.local/bin" >> $GITHUB_PATH
+      - name: Bump semver
+        run: yarn bump -v
+      - name: Dump data
+        run: |
+          echo package.json | jq '.version'
+          echo CHANGELOG.md
