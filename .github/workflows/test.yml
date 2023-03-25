@@ -26,7 +26,7 @@ jobs:
         id: extract-tag
         uses: ./scripts/formatBranch
         with:
-          context: ${{ github }}
+          context: ${{ toJSON(github) }}
 
   PublishImage:
     name: Publish image to container registries
