@@ -4,11 +4,10 @@ on:
   push:
 
 jobs:
-  testing_actions:
-    name: Testing Actions
+  print_context:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Project
-        uses: actions/checkout@v3
-      - name: Logging
-        run: echo ${{ github.head_ref }}
+      - env:
+          EVENT_CONTEXT: ${{ toJSON(github) }}
+        run: |
+          echo $EVENT_CONTEXT
