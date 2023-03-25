@@ -8,5 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOCKER_TARGET: ${{ github.ref_name == 'main' && 'latest' || format('pr-{0}', github.ref_name)  }}
+      EVENT_CONTEXT: ${{ toJSON(github) }}
     steps:
       - run: echo $DOCKER_TARGET
+      - run: echo $EVENT_CONTEXT
