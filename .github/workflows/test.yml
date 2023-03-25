@@ -10,5 +10,5 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v3
-      - name: Install Dependencies
-        run: echo ${{ github.ref }}
+      - name: Logging
+        run: echo ${{ github.head_ref }}
