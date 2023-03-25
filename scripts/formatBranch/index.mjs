@@ -1,4 +1,4 @@
-import { getInput, setOutput } from '@actions/core';
+import { getInput, setOutput, debug } from '@actions/core';
 
 /**
  * Formats a Git branch to a valid Docker tag
@@ -21,7 +21,8 @@ function formatBranch(branch) {
 	return formattedBranch;
 }
 
-const branch = getInput('branch', { required: true });
-const parsed = formatBranch(branch);
+const branch = getInput('context', { required: true });
+debug(branch);
+// const parsed = formatBranch(branch);
 
-setOutput('tag', parsed.tag);
+// setOutput('tag', parsed.tag);
