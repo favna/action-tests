@@ -7,6 +7,6 @@ jobs:
   print_context:
     runs-on: ubuntu-latest
     env:
-      DOCKER_TARGET: ${{ github.ref_name == 0 && 'main' ||  format('pr-{0}', github.ref_name)  }}
+      DOCKER_TARGET: ${{ github.ref_name == 'main' ||  format('pr-{0}', github.ref_name)  }}
     steps:
       - run: echo $DOCKER_TARGET
