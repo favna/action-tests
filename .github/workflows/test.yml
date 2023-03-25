@@ -2,6 +2,7 @@ name: Testing Actions
 
 on:
   push:
+  pull_request:
 
 jobs:
   print_context:
