@@ -9,7 +9,7 @@
 		"standard-version": "^9.5.0"
 	},
 	"prettier": "@sapphire/prettier-config",
-	"packageManager": "yarn@3.6.2",
+	"packageManager": "yarn@3.6.3",
 	"scripts": {
 		"bump": "cliff-jumper",
 		"check-update": "cliff-jumper --dry-run"
