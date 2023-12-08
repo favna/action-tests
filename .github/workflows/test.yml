@@ -1,48 +1,15 @@
 name: Testing Actions
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
-  pull_request:
 
 jobs:
-  ExtractDockerTag:
-    name: Extract Docker Tag
+  Checks:
+    name: Testing
     runs-on: ubuntu-latest
-    outputs:
-      tag: ${{ steps.extract-tag.outputs.tag }}
     steps:
-      - name: Checkout Project
-        uses: actions/checkout@v3
-      - name: Use Node.js v20
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-          cache: yarn
-      - name: Install Dependencies
-        run: yarn --immutable
-      - name: Extract Docker Tag
-        id: extract-tag
-        uses: ./scripts/formatBranch
-        with:
-          context: ${{ toJSON(github) }}
-
-  PublishImage:
-    name: Publish image to container registries
-    runs-on: ubuntu-latest
-    needs: ExtractDockerTag
-    env:
-      DOCKER_TARGET: ${{ github.ref_name == 'main' && 'latest' || format('pr-{0}', github.ref_name)  }}
-      EVENT_CONTEXT: ${{ toJSON(github) }}
-      DOCKER_TAG: ${{ needs.ExtractDockerTag.outputs.tag }}
-    steps:
-      - name: print Docker Target
-        run: echo $DOCKER_TARGET
-      - name: print Event Context
-        run: echo $EVENT_CONTEXT
-      - name: print Docker Tag Env
-        run: echo $DOCKER_TAG
-      - name: print Docker Tag Variable
-        run: echo ${{ needs.ExtractDockerTag.outputs.tag }}
+      - name: Checks
+        run: |
+          sshpass --help
