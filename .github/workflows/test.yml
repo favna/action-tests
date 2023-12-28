@@ -1,4 +1,4 @@
-name: Testing Actions
+name: Continuous Integration
 
 on:
   push:
@@ -6,10 +6,19 @@ on:
       - main
 
 jobs:
-  Checks:
-    name: Testing
+  BuildingAndTesting:
+    name: Building and Testing with node v${{ matrix.node }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [18, 19, 20, 21]
     steps:
-      - name: Checks
-        run: |
-          sshpass --help
+      - name: Checkout Project
+        uses: actions/checkout@v4
+      - name: Use Node.js v${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: yarn
+          registry-url: https://registry.yarnpkg.org/
