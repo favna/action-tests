@@ -1,0 +1,33 @@
+name: Automatic Label Sync
+
+on:
+  workflow_dispatch:
+
+jobs:
+  label_sync:
+    name: Automatic Label Synchronization
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Core Labels
+        uses: actions/checkout@v4
+        with:
+          path: core-labels
+          filter: '.github/labels.yml'
+          repository: 'sapphiredev/.github'
+      - name: Checkout Project
+        uses: actions/checkout@v4
+        with:
+          path: overwrite-labels
+          filter: '.github/labels.yml'
+      - name: Log files
+        run: ls -al ./*
+      - name: Merge labels
+        run: |
+          yq '. *+ load("core-labels/.github/labels.yml")' overwrite-labels/.github/labels.yml > labels.yml
+      - name: Log files
+        run: ls -al ./*
+      - name: Run Label Sync
+        uses: crazy-max/ghaction-github-labeler@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          yaml-file: labels.yml
