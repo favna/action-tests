@@ -12,13 +12,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: core-labels
-          filter: '.github/labels.yml'
+          sparse-checkout: .github/labels.yml
+          sparse-checkout-cone-mode: false
           repository: 'sapphiredev/.github'
       - name: Checkout Project
         uses: actions/checkout@v4
         with:
           path: overwrite-labels
-          filter: '.github/labels.yml'
+          sparse-checkout: .github/labels.yml
+          sparse-checkout-cone-mode: false
       - name: Log files
         run: ls -al ./*
       - name: Merge labels
