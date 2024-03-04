@@ -21,7 +21,7 @@ jobs:
         run: |
           echo ${{ github.ref }}
           echo ${{ contains(github.ref, '-') }}
-          if [ ${{ contains(github.ref, '-') }} ]; then
+          if [ ${{ contains(github.ref, '-') }} = "true" ]; then
             echo "This is a prerelease"
           else
             echo "This is a release"
