@@ -2,8 +2,8 @@ name: Continuous Integration
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*.*.*'
 
 jobs:
   BuildingAndTesting:
@@ -21,3 +21,8 @@ jobs:
         shell: bash
         run: |
           echo ${{ github.ref }}
+          if [ ${{ contains(github.ref, '-') }} ]; then
+            echo "This is a prerelease"
+          else
+            echo "This is a release"
+          fi
