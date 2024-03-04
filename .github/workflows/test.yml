@@ -20,6 +20,7 @@ jobs:
         shell: bash
         run: |
           echo ${{ github.ref }}
+          echo ${{ contains(github.ref, '-') }}
           if [ ${{ contains(github.ref, '-') }} ]; then
             echo "This is a prerelease"
           else
