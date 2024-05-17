@@ -5,5 +5,4 @@ identifierBase: false
 pushTag: true
 githubRepo: favna/action-tests
 githubRelease: true
-githubReleasePrerelease: true
-githubReleaseDraft: true
+githubReleaseLatest: false
