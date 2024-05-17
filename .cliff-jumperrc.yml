@@ -3,6 +3,6 @@ packagePath: .
 commitMessageTemplate: 'chore(release): release {{new-version}}'
 identifierBase: false
 pushTag: true
-githubRepo: auto
+githubRepo: favna/action-tests
 githubRelease: true
 githubReleasePrerelease: true
