@@ -4,4 +4,5 @@ commitMessageTemplate: 'chore(release): release {{new-version}}'
 identifierBase: false
 pushTag: true
 githubRepo: auto
+githubRelease: true
 githubReleasePrerelease: true
