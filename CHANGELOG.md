@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.8.0](https://github.com/favware/graphql-pokemon/compare/v1.7.0...v1.8.0) - (2024-05-17)
+
+## 🚀 Features
+
+- Latest prerelease ([fa184cf](https://github.com/favware/graphql-pokemon/commit/fa184cfbfecb450b7d57ea527ee590f0f0a93c6c))
+
 # [1.7.0](https://github.com/favware/graphql-pokemon/compare/v1.6.0...v1.7.0) - (2024-05-17)
 
 ## 🚀 Features
