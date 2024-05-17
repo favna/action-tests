@@ -1,3 +1,5 @@
 name: actions-test
 packagePath: .
 commitMessageTemplate: 'chore(release): release {{new-version}}'
+identifierBase: false
+githubRepo: auto
