@@ -3,3 +3,4 @@ packagePath: .
 commitMessageTemplate: 'chore(release): release {{new-version}}'
 identifierBase: false
 githubRepo: auto
+githubReleasePrerelease: true
