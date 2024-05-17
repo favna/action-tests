@@ -2,5 +2,6 @@ name: actions-test
 packagePath: .
 commitMessageTemplate: 'chore(release): release {{new-version}}'
 identifierBase: false
+pushTag: true
 githubRepo: auto
 githubReleasePrerelease: true
