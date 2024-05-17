@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"author": "Jeroen Claassens <support@favware.tech>",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"bump": "cliff-jumper",
 		"check-update": "cliff-jumper --dry-run"
@@ -14,5 +15,8 @@
 		"prettier": "^3.2.5"
 	},
 	"prettier": "@sapphire/prettier-config",
-	"packageManager": "yarn@4.2.2"
+	"packageManager": "yarn@4.2.2",
+	"resolutions": {
+		"@favware/cliff-jumper": "portal:/F:/favware/cliff-jumper"
+	}
 }
