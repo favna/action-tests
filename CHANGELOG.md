@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.15.0](https://github.com/favware/graphql-pokemon/compare/v1.14.1...v1.15.0) - (2024-06-03)
+
+## 🐛 Bug Fixes
+
+- Do not use prerelease ([3e91d04](https://github.com/favware/graphql-pokemon/commit/3e91d04190b659d8709fac4754439cda10e8e24d))
+
+## 🚀 Features
+
+- Update release name template ([1c98dde](https://github.com/favware/graphql-pokemon/commit/1c98ddecf81eb006a661bb5c581f2c94664db018))
+
 # [1.14.1](https://github.com/favware/graphql-pokemon/compare/v1.14.0...v1.14.1) - (2024-06-03)
 
 ## 🐛 Bug Fixes
