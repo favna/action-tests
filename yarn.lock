@@ -50,9 +50,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@favware/cliff-jumper@npm:4.0.0-next.85f4272":
-  version: 4.0.0-next.85f4272
-  resolution: "@favware/cliff-jumper@npm:4.0.0-next.85f4272"
+"@favware/cliff-jumper@npm:4.0.1-next.684b29f":
+  version: 4.0.1-next.684b29f
+  resolution: "@favware/cliff-jumper@npm:4.0.1-next.684b29f"
   dependencies:
     "@favware/colorette-spinner": "npm:^1.0.1"
     "@octokit/auth-token": "npm:^5.1.1"
@@ -62,7 +62,6 @@ __metadata:
     "@sapphire/utilities": "npm:3.16.2"
     colorette: "npm:^2.0.20"
     commander: "npm:^12.1.0"
-    conventional-changelog-angular: "npm:^8.0.0"
     conventional-recommended-bump: "npm:^10.0.0"
     execa: "npm:^9.1.0"
     git-cliff: "npm:^2.3.0"
@@ -72,7 +71,7 @@ __metadata:
   bin:
     cj: ./dist/cli.js
     cliff-jumper: ./dist/cli.js
-  checksum: 10/98eb78d61886078c0029e845de3a20e8b791d45f716fc047bff5e3d84dd31f6c61fe8563c21c66d68d94b25a1e9f69243a6cc712e7c41f83cd0d1b54ef27c593
+  checksum: 10/5c010143c01b5378bdf9a26c47cb140937314f807c10fe000a29e409df22d4e29ac1789c59e6a2eab35aa4d7d788d532bb3ce1108c0ba2c853cc38b3b65b677b
   languageName: node
   linkType: hard
 
@@ -227,7 +226,7 @@ __metadata:
   resolution: "actions-test@workspace:."
   dependencies:
     "@actions/core": "npm:^1.10.1"
-    "@favware/cliff-jumper": "npm:4.0.0-next.85f4272"
+    "@favware/cliff-jumper": "npm:4.0.1-next.684b29f"
     "@sapphire/prettier-config": "npm:^2.0.0"
     prettier: "npm:^3.3.0"
   languageName: unknown
@@ -237,13 +236,6 @@ __metadata:
   version: 2.0.1
   resolution: "argparse@npm:2.0.1"
   checksum: 10/18640244e641a417ec75a9bd38b0b2b6b95af5199aa241b131d4b2fb206f334d7ecc600bd194861610a5579084978bfcbb02baa399dbe442d56d0ae5e60dbaef
-  languageName: node
-  linkType: hard
-
-"array-ify@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "array-ify@npm:1.0.0"
-  checksum: 10/c0502015b319c93dd4484f18036bcc4b654eb76a4aa1f04afbcef11ac918859bb1f5d71ba1f0f1141770db9eef1a4f40f1761753650873068010bbf7bcdae4a4
   languageName: node
   linkType: hard
 
@@ -272,25 +264,6 @@ __metadata:
   version: 12.1.0
   resolution: "commander@npm:12.1.0"
   checksum: 10/cdaeb672d979816853a4eed7f1310a9319e8b976172485c2a6b437ed0db0a389a44cfb222bfbde772781efa9f215bdd1b936f80d6b249485b465c6cb906e1f93
-  languageName: node
-  linkType: hard
-
-"compare-func@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "compare-func@npm:2.0.0"
-  dependencies:
-    array-ify: "npm:^1.0.0"
-    dot-prop: "npm:^5.1.0"
-  checksum: 10/fb71d70632baa1e93283cf9d80f30ac97f003aabee026e0b4426c9716678079ef5fea7519b84d012cbed938c476493866a38a79760564a9e21ae9433e40e6f0d
-  languageName: node
-  linkType: hard
-
-"conventional-changelog-angular@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "conventional-changelog-angular@npm:8.0.0"
-  dependencies:
-    compare-func: "npm:^2.0.0"
-  checksum: 10/856e4652015d6ff5a192e2051efe4eb0d57534da304a3bfa6eb1e1ed06c995fe6d7c91d46e7a6de95baea52f7ccaad3ffe18260c972d40bad862f85d00c7b437
   languageName: node
   linkType: hard
 
@@ -342,15 +315,6 @@ __metadata:
     shebang-command: "npm:^2.0.0"
     which: "npm:^2.0.1"
   checksum: 10/e1a13869d2f57d974de0d9ef7acbf69dc6937db20b918525a01dacb5032129bd552d290d886d981e99f1b624cb03657084cc87bd40f115c07ecf376821c729ce
-  languageName: node
-  linkType: hard
-
-"dot-prop@npm:^5.1.0":
-  version: 5.3.0
-  resolution: "dot-prop@npm:5.3.0"
-  dependencies:
-    is-obj: "npm:^2.0.0"
-  checksum: 10/33b2561617bd5c73cf9305368ba4638871c5dbf9c8100c8335acd2e2d590a81ec0e75c11cfaea5cc3cf8c2f668cad4beddb52c11856d0c9e666348eee1baf57a
   languageName: node
   linkType: hard
 
@@ -500,13 +464,6 @@ __metadata:
   version: 7.0.0
   resolution: "human-signals@npm:7.0.0"
   checksum: 10/f1356547f6553a90530527ba2325c2281e33fa3b9b372a647e377fd8f24e9eb8119082051ca6a9f8821e24f1faa13cd462c849a9476c86e7c190dbf0aa2ee8a4
-  languageName: node
-  linkType: hard
-
-"is-obj@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "is-obj@npm:2.0.0"
-  checksum: 10/c9916ac8f4621962a42f5e80e7ffdb1d79a3fab7456ceaeea394cd9e0858d04f985a9ace45be44433bf605673c8be8810540fe4cc7f4266fc7526ced95af5a08
   languageName: node
   linkType: hard
 

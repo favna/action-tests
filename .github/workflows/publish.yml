@@ -3,22 +3,6 @@ name: Publish
 on:
   workflow_dispatch:
 
-permissions:
-  attestations: write
-  id-token: write
-  contents: write
-  actions: write
-  checks: write
-  deployments: write
-  discussions: write
-  issues: write
-  packages: write
-  pages: write
-  pull-requests: write
-  repository-projects: write
-  security-events: write
-  statuses: write
-
 jobs:
   PublishPackage:
     name: Publish action-test
@@ -45,6 +29,6 @@ jobs:
           GITHUB_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           GITHUB_TOKEN: ${{ github.token }}
       - name: Bump Versions & Publish
-        run: yarn bump
+        run: yarn bump --no-push-tag
         env:
           GITHUB_TOKEN: ${{ github.token }}
