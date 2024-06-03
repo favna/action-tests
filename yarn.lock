@@ -50,9 +50,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@favware/cliff-jumper@npm:4.0.0-next.b8f154b":
-  version: 4.0.0-next.b8f154b
-  resolution: "@favware/cliff-jumper@npm:4.0.0-next.b8f154b"
+"@favware/cliff-jumper@npm:4.0.0-next.cc1d0fb":
+  version: 4.0.0-next.cc1d0fb
+  resolution: "@favware/cliff-jumper@npm:4.0.0-next.cc1d0fb"
   dependencies:
     "@favware/colorette-spinner": "npm:^1.0.1"
     "@octokit/auth-token": "npm:^5.1.1"
@@ -72,7 +72,7 @@ __metadata:
   bin:
     cj: ./dist/cli.js
     cliff-jumper: ./dist/cli.js
-  checksum: 10/3424fb29ac1e068a70b81ba78c3a9a740261d59f4cc5921ebc52de2ebb18d1fdfc54a676f55a12d33604f799509b00b40d4548d46d31657f727039a59ab068ee
+  checksum: 10/68a5fd5a39ec0437aa51ff1b8f75177bc8fae8b7939e38d5d1689f60f28907fac04ffabd00ed04c7a1346ba140d1b1c94ccef28d732a34bdba9eead97ca0d131
   languageName: node
   linkType: hard
 
@@ -227,7 +227,7 @@ __metadata:
   resolution: "actions-test@workspace:."
   dependencies:
     "@actions/core": "npm:^1.10.1"
-    "@favware/cliff-jumper": "npm:4.0.0-next.b8f154b"
+    "@favware/cliff-jumper": "npm:4.0.0-next.cc1d0fb"
     "@sapphire/prettier-config": "npm:^2.0.0"
     prettier: "npm:^3.3.0"
   languageName: unknown
