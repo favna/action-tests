@@ -6,6 +6,5 @@ pushTag: true
 githubRepo: favna/action-tests
 githubRelease: true
 githubReleaseLatest: true
-githubReleaseDraft: true
 verbose: true
 githubReleaseNameTemplate: 'Release {{name}} {{new-version}}'
