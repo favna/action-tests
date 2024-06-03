@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.15.2](https://github.com/favware/graphql-pokemon/compare/v1.15.1...v1.15.2) - (2024-06-03)
+
+## 🐛 Bug Fixes
+
+- No longer draft s ([bf78c18](https://github.com/favware/graphql-pokemon/commit/bf78c1899d837187093756e617df485172c7cb95))
+
 # [1.15.1](https://github.com/favware/graphql-pokemon/compare/v1.15.0...v1.15.1) - (2024-06-03)
 
 ## 🐛 Bug Fixes
