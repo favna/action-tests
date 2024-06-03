@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+# [undefined](https://github.com/favware/graphql-pokemon/compare/v1.11.0...undefined) - (2024-06-03)
+
+## 🚀 Features
+
+- Bump cliff-jumper ([3c74b73](https://github.com/favware/graphql-pokemon/commit/3c74b739ec93eacfa0586a7131ec1fe64baeaab6))
+
 # [1.11.0](https://github.com/favware/graphql-pokemon/compare/v1.10.0...v1.11.0) - (2024-06-03)
 
 ## 🚀 Features
