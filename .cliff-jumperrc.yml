@@ -2,9 +2,4 @@ name: actions-test
 packagePath: .
 commitMessageTemplate: 'chore(release): release {{new-version}}'
 identifierBase: false
-pushTag: true
-githubRepo: favna/action-tests
-githubRelease: true
-githubReleaseLatest: true
 verbose: true
-githubReleaseNameTemplate: 'Release {{name}} {{new-version}}'

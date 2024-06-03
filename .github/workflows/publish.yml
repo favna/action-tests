@@ -29,6 +29,6 @@ jobs:
           GITHUB_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           GITHUB_TOKEN: ${{ github.token }}
       - name: Bump Versions & Publish
-        run: yarn bump --no-push-tag
+        run: yarn bump
         env:
           GITHUB_TOKEN: ${{ github.token }}
