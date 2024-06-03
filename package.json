@@ -17,6 +17,6 @@
 	"prettier": "@sapphire/prettier-config",
 	"packageManager": "yarn@4.2.2",
 	"resolutions": {
-		"@favware/cliff-jumper": "portal:/F:/favware/cliff-jumper"
+		"@favware/cliff-jumper": "portal:../../favware/cliff-jumper"
 	}
 }

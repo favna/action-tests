@@ -50,25 +50,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@favware/cliff-jumper@portal:/F:/favware/cliff-jumper::locator=actions-test%40workspace%3A.":
+"@favware/cliff-jumper@portal:../../favware/cliff-jumper::locator=actions-test%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@favware/cliff-jumper@portal:/F:/favware/cliff-jumper::locator=actions-test%40workspace%3A."
+  resolution: "@favware/cliff-jumper@portal:../../favware/cliff-jumper::locator=actions-test%40workspace%3A."
   dependencies:
     "@favware/colorette-spinner": "npm:^1.0.1"
     "@octokit/auth-token": "npm:^5.1.1"
     "@octokit/core": "npm:^6.1.2"
     "@octokit/plugin-retry": "npm:^7.1.1"
     "@sapphire/result": "npm:^2.6.6"
-    "@sapphire/utilities": "npm:3.15.3"
+    "@sapphire/utilities": "npm:3.16.2"
     colorette: "npm:^2.0.20"
-    commander: "npm:^12.0.0"
+    commander: "npm:^12.1.0"
     conventional-changelog-angular: "npm:^8.0.0"
     conventional-recommended-bump: "npm:^10.0.0"
-    execa: "npm:^9.0.2"
-    git-cliff: "patch:git-cliff@npm%3A2.2.2#~/.yarn/patches/git-cliff-npm-2.2.2-ea837dd465.patch"
+    execa: "npm:^9.1.0"
+    git-cliff: "npm:^2.3.0"
     js-yaml: "npm:^4.1.0"
     semver: "npm:^7.6.2"
-    smol-toml: "npm:^1.2.0"
+    smol-toml: "npm:^1.2.1"
   bin:
     cj: ./dist/cli.js
     cliff-jumper: ./dist/cli.js
@@ -193,10 +193,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/utilities@npm:3.15.3":
-  version: 3.15.3
-  resolution: "@sapphire/utilities@npm:3.15.3"
-  checksum: 10/966db788486c01719d3d54cf00eccbc378fcd79f143c994480644f3af4dd22daa65f5e9ea7da6af0973d9730e5d10b762eaf391770d746278023fd012438eb13
+"@sapphire/utilities@npm:3.16.2":
+  version: 3.16.2
+  resolution: "@sapphire/utilities@npm:3.16.2"
+  checksum: 10/9801f26cc7c37f1c4d56231d2e3967e7ac072d037dbc11b577d1ecf09fe7c6e4141bd1d1a10490f3c51eeeaf81eac0373502d41366dc68627b490597ea6d1ebe
   languageName: node
   linkType: hard
 
@@ -228,7 +228,7 @@ __metadata:
     "@actions/core": "npm:^1.10.1"
     "@favware/cliff-jumper": "npm:^3.0.3"
     "@sapphire/prettier-config": "npm:^2.0.0"
-    prettier: "npm:^3.2.5"
+    prettier: "npm:^3.3.0"
   languageName: unknown
   linkType: soft
 
@@ -267,10 +267,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "commander@npm:12.0.0"
-  checksum: 10/62062e2ffe6abd5aa42a551e62fd5eb9b2620f6ac4299382b2aa9fb02f95cda0242d7e84acb890479bd6491edb805f7f91aecb5b4f5c70dc57df49ed7f02ef14
+"commander@npm:^12.1.0":
+  version: 12.1.0
+  resolution: "commander@npm:12.1.0"
+  checksum: 10/cdaeb672d979816853a4eed7f1310a9319e8b976172485c2a6b437ed0db0a389a44cfb222bfbde772781efa9f215bdd1b936f80d6b249485b465c6cb906e1f93
   languageName: node
   linkType: hard
 
@@ -370,7 +370,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^9.0.2":
+"execa@npm:^9.1.0":
   version: 9.1.0
   resolution: "execa@npm:9.1.0"
   dependencies:
@@ -416,59 +416,59 @@ __metadata:
   languageName: node
   linkType: hard
 
-"git-cliff-darwin-arm64@npm:2.2.2":
-  version: 2.2.2
-  resolution: "git-cliff-darwin-arm64@npm:2.2.2"
+"git-cliff-darwin-arm64@npm:2.3.0":
+  version: 2.3.0
+  resolution: "git-cliff-darwin-arm64@npm:2.3.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"git-cliff-darwin-x64@npm:2.2.2":
-  version: 2.2.2
-  resolution: "git-cliff-darwin-x64@npm:2.2.2"
+"git-cliff-darwin-x64@npm:2.3.0":
+  version: 2.3.0
+  resolution: "git-cliff-darwin-x64@npm:2.3.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"git-cliff-linux-arm64@npm:2.2.2":
-  version: 2.2.2
-  resolution: "git-cliff-linux-arm64@npm:2.2.2"
+"git-cliff-linux-arm64@npm:2.3.0":
+  version: 2.3.0
+  resolution: "git-cliff-linux-arm64@npm:2.3.0"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"git-cliff-linux-x64@npm:2.2.2":
-  version: 2.2.2
-  resolution: "git-cliff-linux-x64@npm:2.2.2"
+"git-cliff-linux-x64@npm:2.3.0":
+  version: 2.3.0
+  resolution: "git-cliff-linux-x64@npm:2.3.0"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"git-cliff-windows-arm64@npm:2.2.2":
-  version: 2.2.2
-  resolution: "git-cliff-windows-arm64@npm:2.2.2"
+"git-cliff-windows-arm64@npm:2.3.0":
+  version: 2.3.0
+  resolution: "git-cliff-windows-arm64@npm:2.3.0"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"git-cliff-windows-x64@npm:2.2.2":
-  version: 2.2.2
-  resolution: "git-cliff-windows-x64@npm:2.2.2"
+"git-cliff-windows-x64@npm:2.3.0":
+  version: 2.3.0
+  resolution: "git-cliff-windows-x64@npm:2.3.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"git-cliff@npm:2.2.2":
-  version: 2.2.2
-  resolution: "git-cliff@npm:2.2.2"
+"git-cliff@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "git-cliff@npm:2.3.0"
   dependencies:
     execa: "npm:^8.0.1"
-    git-cliff-darwin-arm64: "npm:2.2.2"
-    git-cliff-darwin-x64: "npm:2.2.2"
-    git-cliff-linux-arm64: "npm:2.2.2"
-    git-cliff-linux-x64: "npm:2.2.2"
-    git-cliff-windows-arm64: "npm:2.2.2"
-    git-cliff-windows-x64: "npm:2.2.2"
+    git-cliff-darwin-arm64: "npm:2.3.0"
+    git-cliff-darwin-x64: "npm:2.3.0"
+    git-cliff-linux-arm64: "npm:2.3.0"
+    git-cliff-linux-x64: "npm:2.3.0"
+    git-cliff-windows-arm64: "npm:2.3.0"
+    git-cliff-windows-x64: "npm:2.3.0"
   dependenciesMeta:
     git-cliff-darwin-arm64:
       optional: true
@@ -484,37 +484,7 @@ __metadata:
       optional: true
   bin:
     git-cliff: lib/cli/cli.js
-  checksum: 10/9d3ba4d9f85ba41c7429fdf558fb0c4c616c4fc34369d89687753e16d4d4b2aa003533ec058dc5b9d12fe2a27ecad1e0f05c6a12c1f803bcef20407ad33d9eea
-  languageName: node
-  linkType: hard
-
-"git-cliff@patch:git-cliff@npm%3A2.2.2#~/.yarn/patches/git-cliff-npm-2.2.2-ea837dd465.patch":
-  version: 2.2.2
-  resolution: "git-cliff@patch:git-cliff@npm%3A2.2.2#~/.yarn/patches/git-cliff-npm-2.2.2-ea837dd465.patch::version=2.2.2&hash=b3adbe"
-  dependencies:
-    execa: "npm:^8.0.1"
-    git-cliff-darwin-arm64: "npm:2.2.2"
-    git-cliff-darwin-x64: "npm:2.2.2"
-    git-cliff-linux-arm64: "npm:2.2.2"
-    git-cliff-linux-x64: "npm:2.2.2"
-    git-cliff-windows-arm64: "npm:2.2.2"
-    git-cliff-windows-x64: "npm:2.2.2"
-  dependenciesMeta:
-    git-cliff-darwin-arm64:
-      optional: true
-    git-cliff-darwin-x64:
-      optional: true
-    git-cliff-linux-arm64:
-      optional: true
-    git-cliff-linux-x64:
-      optional: true
-    git-cliff-windows-arm64:
-      optional: true
-    git-cliff-windows-x64:
-      optional: true
-  bin:
-    git-cliff: lib/cli/cli.js
-  checksum: 10/2a8fed3db3e1abedd7ee52e4dbcb2850f51c5c8f2c913fa996e6069e4fde296b1adc9bc5f4f6ab9346d672da19ed33229b7555aa66456737fbb71815b219c4f8
+  checksum: 10/3db247ae115a3a34fcff7b190b35a98a04ef79a8f6a1c8e45375e9c536a614f87ddfffc2e0ad8e0dfd2029d701e79637fba8925a02d13ce09e6396dcc6c34019
   languageName: node
   linkType: hard
 
@@ -654,12 +624,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.0.0, prettier@npm:^3.2.5":
+"prettier@npm:^3.0.0":
   version: 3.2.5
   resolution: "prettier@npm:3.2.5"
   bin:
     prettier: bin/prettier.cjs
   checksum: 10/d509f9da0b70e8cacc561a1911c0d99ec75117faed27b95cc8534cb2349667dee6351b0ca83fa9d5703f14127faa52b798de40f5705f02d843da133fc3aa416a
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "prettier@npm:3.3.0"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10/e55233f8e4b5f96f52180dbfa424ae797a98a9b8a9a7a79de5004e522c02b423e71927ed99d855dbfcd00dc3b82e5f6fb304cfe117cc4e7c8477d883df2d8984
   languageName: node
   linkType: hard
 
@@ -715,10 +694,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"smol-toml@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "smol-toml@npm:1.2.0"
-  checksum: 10/b7c09fb8170447544837150fcccc29436d4648e68d5ac45d9c1df544f8fb585b080cd2e3ab59f2e18febcef49ef4b29c4f35f29fd4f6757a2369b737ec7ce2be
+"smol-toml@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "smol-toml@npm:1.2.1"
+  checksum: 10/2641d74109ddf4b8c13787057ccb12ef2ec52797d733454c99824af274ffe14bac7d5efe0cb4486c22ef4071bca9feeba35f1f8bc27e814c149e3ff0b5a0bdb2
   languageName: node
   linkType: hard
 
