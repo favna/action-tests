@@ -7,7 +7,7 @@ permissions:
   # attestations: write
   id-token: write
   contents: write
-  # actions: write
+  actions: write
 
 jobs:
   PublishPackage:
