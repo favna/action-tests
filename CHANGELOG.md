@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.11.0](https://github.com/favware/graphql-pokemon/compare/v1.10.0...v1.11.0) - (2024-06-03)
+
+## 🚀 Features
+
+- Reconfig ([60f4544](https://github.com/favware/graphql-pokemon/commit/60f4544d65180aa859563c98467bb3fba8388dde))
+- Remove NOT-CHANGELOG.md ([4328332](https://github.com/favware/graphql-pokemon/commit/43283329ab09849a7740046c2d623d958d7fae9b))
+
 # [1.8.0](https://github.com/favware/graphql-pokemon/compare/v1.7.0...v1.8.0) - (2024-05-17)
 
 ## 🚀 Features
