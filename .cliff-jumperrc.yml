@@ -8,4 +8,4 @@ githubRelease: true
 githubReleaseLatest: true
 githubReleasePrerelease: true
 verbose: true
-githubReleaseNameTemplate: 'Release {{name}} {{version}} - Electric Boogaloo'
+githubReleaseNameTemplate: 'Release {{name}} {{new-version}} - Electric Boogaloo'
