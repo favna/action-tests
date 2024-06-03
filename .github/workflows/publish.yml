@@ -5,13 +5,13 @@ on:
 
 permissions:
   # attestations: write
-  # id-token: write
+  id-token: write
   contents: write
   # actions: write
 
 jobs:
   PublishPackage:
-    name: Publish @favware/cliff-jumper
+    name: Publish action-test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
