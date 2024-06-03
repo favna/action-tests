@@ -6,6 +6,5 @@ pushTag: true
 githubRepo: favna/action-tests
 githubRelease: true
 githubReleaseLatest: true
-githubReleasePrerelease: true
 verbose: true
 githubReleaseNameTemplate: 'Release {{name}} {{new-version}} - Electric Boogaloo'
