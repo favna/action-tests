@@ -7,5 +7,4 @@ githubRepo: favna/action-tests
 githubRelease: true
 githubReleaseLatest: true
 githubReleasePrerelease: true
-changelogPrependFile: './NOT-CHANGELOG.md'
 verbose: true
