@@ -26,11 +26,11 @@ jobs:
           GITHUB_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          REMOTE_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          # REMOTE_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-          git remote set-url origin "https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${GITHUB_REPOSITORY}.git"
+          # git remote set-url origin "https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${GITHUB_REPOSITORY}.git"
           git config --local user.email "${GITHUB_EMAIL}"
           git config --local user.name "${GITHUB_USER}"
-          git branch --set-upstream-to=origin/${REMOTE_BRANCH} ${REMOTE_BRANCH}
+          # git branch --set-upstream-to=origin/${REMOTE_BRANCH} ${REMOTE_BRANCH}
 
           yarn bump
