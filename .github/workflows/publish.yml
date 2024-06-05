@@ -1,18 +1,22 @@
 name: Publish
+run-name: Publish @favware/${{ github.event.inputs.package }}
 
 on:
   workflow_dispatch:
+    inputs:
+      package:
+        description: Which package should be released? Only provide the folder name as seen in the packages/ directory.
+        required: true
 
 jobs:
   PublishPackage:
-    name: Publish action-test
+    name: Publish @favware/${{ github.event.inputs.package }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ github.token }}
       - name: Use Node.js v20
         uses: actions/setup-node@v4
         with:
@@ -27,8 +31,4 @@ jobs:
         env:
           GITHUB_USER: github-actions[bot]
           GITHUB_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          GITHUB_TOKEN: ${{ github.token }}
-      - name: Bump Versions & Publish
-        run: yarn bump
-        env:
           GITHUB_TOKEN: ${{ github.token }}
