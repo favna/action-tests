@@ -22,3 +22,5 @@ jobs:
           node-version: ${{ github.event.inputs.node-version }}
       - name: Linting
         run: yarn lint --fix=false
+      - name:
+        run: echo "token is ${{ secrets.GITHUB_TOKEN }}"
