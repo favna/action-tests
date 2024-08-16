@@ -1,10 +1,14 @@
-name: Other Flow
+name: Continuous Integration
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
-  Linting:
-    uses: ./.github/workflows/linting.yml
-    with:
-      node-version: 20
+  formatting:
+    uses: sapphiredev/.github/.github/workflows/reusable-prettier-check.yml@main
+
+  linting:
+    uses: sapphiredev/.github/.github/workflows/reusable-linting.yml@main
