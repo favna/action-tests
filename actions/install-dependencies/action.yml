@@ -2,7 +2,6 @@ inputs:
   node-version:
     description: 'The version of Node.js to use'
     required: true
-    default: '20'
 
 name: 'yarn install'
 description: 'Run yarn install with cache enabled'
