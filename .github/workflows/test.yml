@@ -4,20 +4,10 @@ on:
   push:
 
 jobs:
-  TestFlow:
-    name: Test flow
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Install dependencies
-        uses: ./actions/install-dependencies
-        with:
-          node-version: 20
-      - name: Run project
-        run: yarn start
-
   CallReusable:
     uses: ./.github/workflows/linting.yml
     with:
       node-version: 20
+
+  LabelSync:
+    uses: sapphiredev/.github/.github/workflows/reusable-labelsync.yml@main

@@ -4,21 +4,7 @@ on:
   push:
 
 jobs:
-  OtherFlow:
-    name: Other flow
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Install dependencies
-        uses: ./actions/install-dependencies
-        with:
-          node-version: 22
-      - name: Run project
-        run: yarn start
-
   Linting:
     uses: ./.github/workflows/linting.yml
     with:
       node-version: 20
-    
