@@ -9,7 +9,7 @@ on:
 jobs:
   formatting:
     name: Formatting
-    uses: sapphiredev/.github/.github/workflows/reusable-prettier-check.yml@main
+    uses: sapphiredev/.github/.github/workflows/reusable-yarn-job.yml@main
     with:
       script-name: lint --fix=false
 
