@@ -1,3 +1,9 @@
+inputs:
+  node-version:
+    description: 'The version of Node.js to use'
+    required: true
+    default: '20'
+
 name: 'yarn install'
 description: 'Run yarn install with cache enabled'
 runs:
@@ -12,7 +18,7 @@ runs:
     - name: Use Node.js v20
       uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: ${{ inputs.node-version }}
 
     - name: Install dependencies
       shell: bash
