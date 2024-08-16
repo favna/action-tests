@@ -11,3 +11,5 @@ jobs:
 
   LabelSync:
     uses: sapphiredev/.github/.github/workflows/reusable-labelsync.yml@main
+    with:
+      operating-system: ubuntu-latest
