@@ -8,11 +8,9 @@ on:
 
 jobs:
   formatting:
-    name: Formatting
     uses: sapphiredev/.github/.github/workflows/reusable-prettier-check.yml@main
     with:
       script-name: lint --fix=false
 
   linting:
-    name: Linting
     uses: sapphiredev/.github/.github/workflows/reusable-linting.yml@main
