@@ -1,11 +1,11 @@
-name: Test Flow
+name: Other Flow
 
 on:
   push:
 
 jobs:
-  TestFlow:
-    name: Test flow
+  OtherFlow:
+    name: Other flow
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
