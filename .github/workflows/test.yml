@@ -9,6 +9,8 @@ on:
 jobs:
   formatting:
     uses: sapphiredev/.github/.github/workflows/reusable-prettier-check.yml@main
+    with:
+      script-name: lint --fix=false
 
   linting:
     uses: sapphiredev/.github/.github/workflows/reusable-linting.yml@main
