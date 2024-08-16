@@ -16,3 +16,8 @@ jobs:
           node-version: 20
       - name: Run project
         run: yarn start
+
+  CallReusable:
+    uses: ./.github/workflows/linting.yml
+    with:
+      node-version: 20
