@@ -1,18 +1,4 @@
 - name: packages:api
   color: 'fbca04'
-- name: packages:editable-commands
-  color: 'fbca04'
-- name: packages:hmr
-  color: 'fbca04'
-- name: packages:i18next
-  color: 'fbca04'
-- name: packages:logger
-  color: 'fbca04'
-- name: packages:pattern-commands
-  color: 'fbca04'
-- name: packages:scheduled-tasks
-  color: 'fbca04'
-- name: packages:subcommands
-  color: 'fbca04'
-- name: packages:utilities-store
+- name: packages:actions-test
   color: 'fbca04'

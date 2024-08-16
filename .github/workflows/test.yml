@@ -1,10 +1,10 @@
-name: Test Flow
+name: Other Flow
 
 on:
   push:
 
 jobs:
-  LabelSync:
-    uses: sapphiredev/.github/.github/workflows/reusable-labelsync.yml@main
+  Linting:
+    uses: ./.github/workflows/linting.yml
     with:
-      operating-system: ubuntu-latest
+      node-version: 20
