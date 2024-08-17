@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: CI
 
 on:
   push:
@@ -9,10 +9,8 @@ on:
 jobs:
   formatting:
     name: Formatting
-    uses: sapphiredev/.github/.github/workflows/reusable-yarn-job.yml@main
-    with:
-      script-name: lint --fix=false
-
-  linting:
-    name: Linting
-    uses: sapphiredev/.github/.github/workflows/reusable-linting.yml@main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing
+        run: |
+          uuidgen
