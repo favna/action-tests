@@ -13,17 +13,17 @@
 		"@sapphire/eslint-config": "^5.0.5",
 		"@sapphire/prettier-config": "^2.0.0",
 		"@sapphire/ts-config": "^5.0.1",
-		"@types/node": "^22.14.0",
+		"@types/node": "^22.14.1",
 		"@typescript-eslint/eslint-plugin": "^7.17.0",
 		"@typescript-eslint/parser": "^7.17.0",
 		"colorette": "^2.0.20",
 		"eslint": "^8.57.1",
-		"eslint-config-prettier": "^10.1.1",
+		"eslint-config-prettier": "^10.1.2",
 		"eslint-plugin-deprecation": "^3.0.0",
 		"eslint-plugin-prettier": "^5.2.6",
 		"prettier": "^3.5.3",
 		"typescript": "~5.4.5"
 	},
 	"prettier": "@sapphire/prettier-config",
-	"packageManager": "yarn@4.8.1"
+	"packageManager": "yarn@4.9.0"
 }
