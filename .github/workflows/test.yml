@@ -1,16 +1,19 @@
-name: CI
-
 on:
   push:
     branches:
       - main
-  pull_request:
 
 jobs:
-  formatting:
-    name: Formatting
+  test:
+    name: Testing
     runs-on: ubuntu-latest
     steps:
-      - name: Testing
+      - name: Extract Package and Semver
+        id: extract-tag
+        uses: sapphiredev/.github/actions/format-tag@main
+        with:
+          tag: "@sapphire/framework@v1.0.0"
+      - name: Log output
         run: |
-          uuidgen
+          echo "Package: ${{ steps.extract-tag.outputs.package }}"
+          echo "Semver: ${{ steps.extract-tag.outputs.semver }}"
