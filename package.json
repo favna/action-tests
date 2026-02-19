@@ -9,7 +9,7 @@
 		"start": "node src/index.js"
 	},
 	"devDependencies": {
-		"@actions/core": "^2.0.3",
+		"@actions/core": "^3.0.0",
 		"@sapphire/eslint-config": "^5.0.6",
 		"@sapphire/prettier-config": "^2.0.0",
 		"@sapphire/ts-config": "^5.0.3",
