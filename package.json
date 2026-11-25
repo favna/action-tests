@@ -10,7 +10,7 @@
 	},
 	"devDependencies": {
 		"@actions/core": "^2.0.3",
-		"@sapphire/eslint-config": "^5.0.6",
+		"@sapphire/eslint-config": "^6.0.0",
 		"@sapphire/prettier-config": "^2.0.0",
 		"@sapphire/ts-config": "^5.0.3",
 		"@types/node": "^24.19.2",
